@@ -87,6 +87,11 @@ merging semantics. A native implementation based on
 
 ### Docs
 - Update README.md
+
+## [0.2.7] - 2026-09-13
+
+### Docs
+- Update README.md
 - Update project/README.md
 - Update project/context.md
 
