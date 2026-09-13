@@ -6,4 +6,4 @@ import ``__version__`` from this module (or from ``opstree``) rather
 than hardcoding a literal.
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.7"

@@ -1,0 +1,147 @@
+# .planfile/.koru/policy.yaml
+# Edit this file to LOOSEN koru's strict-by-default LLM agent policy.
+# All values default to the safest option; uncomment and flip individual
+# gates only after a deliberate decision (and a reviewable git commit).
+#
+# Reference: README.md → "LLM agent contract — koru as the gate".
+
+llm:
+  # Git operations — the agent NEVER runs these by default.
+  # Commits and pushes are reserved for CI/CD and human reviewers.
+  allow_commit: false
+  allow_push: false
+  allow_branch_create: false
+  allow_branch_switch: false
+  allow_tag: false
+
+  # Destructive shell — blocks rm -rf /, dd, mkfs, force-pushes, etc.
+  allow_destructive_shell: false
+
+  # Workflow — every state change must go through `planfile ticket *`.
+  require_planfile_lifecycle: true
+
+  # CI gate — the agent verifies CI exit 0 before completing a ticket.
+  # If you set `ci.command` below, the agent uses it to self-verify.
+  # If you leave it empty, the agent must ask a human to run CI.
+  require_ci_pass_before_complete: true
+
+  # Optional extra forbidden paths (defaults already cover .git/,
+  # .planfile/, .env, secrets/, *.pem, *.key, id_rsa, id_ed25519,
+  # node_modules/). Paths listed here ADD to the defaults.
+  # forbidden_paths:
+  #   - alembic/versions/
+  #   - migrations/
+
+ci:
+  # Universal CI command — runs quality gates on every ticket completion.
+  # Supports multiple tooling stacks; tools are skipped gracefully if not installed.
+  #
+  # Every branch below is guarded by a marker file, pytest included. An
+  # unguarded `pytest -q` at a workspace root — no root pyproject.toml, several
+  # sub-projects — collects the entire tree, vendored venv/ and node_modules/
+  # and all. That is not a quality gate, it is a hang, and because
+  # `require_ci_pass_before_complete` is on it blocks every ticket from
+  # closing. Point `command` at what actually verifies YOUR repo; this default
+  # fails closed when no supported verification is available.
+  command: |
+    set -e
+    echo "=== Universal Quality Gates ==="
+    echo "1. Running project tests (if available)..."
+    if command -v task >/dev/null 2>&1 && [ -f "Taskfile.yml" -o -f "Taskfile.yaml" ]; then
+      task test
+      echo "✅ task test passed"
+    elif command -v pytest >/dev/null 2>&1 &&       [ -f "pyproject.toml" -o -f "setup.py" -o -f "setup.cfg" -o -f "pytest.ini" -o -f "tox.ini" ]; then
+      pytest -q
+      echo "✅ pytest passed"
+    elif [ -f "package.json" ] && command -v npm >/dev/null 2>&1; then
+      npm test
+      echo "✅ npm test passed"
+    elif [ -f "Makefile" ] && command -v make >/dev/null 2>&1; then
+      make test
+      echo "✅ make test passed"
+    else
+      echo "No supported test runner found; configure ci.command for this repository." >&2
+      exit 2
+    fi
+    
+    echo "2. Running TestQL E2E scenarios (if available)..."
+    if command -v testql >/dev/null 2>&1; then
+      if find . -name "*.testql.toon.yaml" -type f 2>/dev/null | head -1 >/dev/null; then
+        if testql suite \
+          --pattern '*.testql.toon.yaml' --output console --fail-fast \
+          2>/dev/null; then
+          echo "✅ testQL suite passed"
+        else
+          echo "⚠️  testQL suite failed or no scenarios"
+          exit 1
+        fi
+      else
+        echo "ℹ️  No TestQL scenarios found"
+      fi
+    else
+      echo "ℹ️  testQL not available"
+    fi
+    
+    echo "3. Running WUP dependency analysis (if available)..."
+    if command -v wup >/dev/null 2>&1; then
+      if [ -f "wup.yaml" ]; then
+        wup status 2>/dev/null && echo "✅ WUP status OK" || { echo "⚠️  WUP issues detected"; exit 1; }
+      else
+        echo "ℹ️  No wup.yaml configuration"
+      fi
+    else
+      echo "ℹ️  WUP not available"
+    fi
+    
+    echo "4. Running Regix quality gates (if available)..."
+    if command -v regix >/dev/null 2>&1; then
+      if [ -f "regix.yaml" ]; then
+        regix gates 2>/dev/null && echo "✅ Regix gates passed" || { echo "⚠️  Regix gates failed"; exit 1; }
+      else
+        echo "ℹ️  No regix.yaml configuration"
+      fi
+    else
+      echo "ℹ️  Regix not available"
+    fi
+
+    echo "5. Running koru autopilot plugin tests (if available)..."
+    if [ -f "plugins/koru-autopilot-vscode/package.json" ] && command -v npm >/dev/null 2>&1; then
+      if (cd plugins/koru-autopilot-vscode && npm test 2>/dev/null); then
+        echo "✅ koru-autopilot-vscode tests passed"
+      else
+        echo "⚠️  koru-autopilot-vscode tests failed"
+        exit 1
+      fi
+    else
+      echo "ℹ️  koru-autopilot-vscode plugin not present"
+    fi
+    
+    echo "=== Quality Gates Complete ==="
+  timeout_seconds: 600
+
+# Optional publication config for `koru ci publish` (validator-agent dispatch).
+# Copy to `.planfile/.koru/ci-publication.yaml` when you want Koru to freeze PR
+# head and dispatch subactor/validator-agent. Koru never self-approves merges.
+#
+# publication:
+#   validator_checkout: /path/to/subactor/validator-agent
+#   wait_checks: true
+#   merge: false
+
+# Free-form notes embedded in every `koru --context` brief.
+# Use these to teach the LLM project-specific conventions.
+notes: []
+#   - "Always run `task lint` before completing a ticket."
+#   - "Never edit migrations under alembic/versions/."
+
+# Synchronous publication of Planfile tickets to external trackers (GitHub Issues,
+# GitLab, Jira, OneDev). Koru delegates to Planfile sync — it never calls GitHub
+# APIs directly. Requires a Planfile integration config such as
+# `.planfile/integrations.github.planfile.yaml` and credentials (e.g. GITHUB_TOKEN).
+#
+# planfile_sync:
+#   enabled: true
+#   integrations: [github]
+#   direction: to
+#   on_create: true
+#   on_update: true

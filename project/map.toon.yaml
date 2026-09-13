@@ -1,110 +1,91 @@
-# op3 | 65f 6191L | python:59,less:5,shell:1 | 2026-04-21
-# stats: 150 func | 51 cls | 65 mod | CC̄=3.3 | critical:7 | cycles:0
-# alerts[5]: CC test_probe_emits_full_hardware_dict=18; CC scan=16; CC test_full_scan_with_mock_context=16; CC test_builtin_layers_exist=13; CC convert=11
-# hotspots[5]: scan fan=24; convert fan=16; make_compat_helpers fan=14; drift fan=12; compute_variance fan=12
-# evolution: baseline
+# op3 | 60f 5603L | yaml:7,toml:1,json:1,shell:1,txt:1,python:49 | 2026-09-08
+# generated in 0.02s
+# producer: code2llm | artifact: map.toon.yaml | schema: 1
+# stats: 155 func | 0 cls | 60 mod | CC̄=3.8 | critical:5 | cycles:0
+# alerts[5]: fan-out scan=26; fan-out RpiPhysicalDisplayProbe.scan=21; CC LessAdapter.render=22; CC RuntimeContainerProbe._list_containers=18; CC RpiPhysicalDisplayProbe._probe_wlr_randr=17
+# hotspots[5]: scan fan=26; RpiPhysicalDisplayProbe.scan fan=21; convert fan=17; compute_variance fan=16; LessAdapter.render fan=14
+# evolution: CC̄ 1.1→3.8 (regressed +2.7)
 # Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
-M[65]:
-  app.doql.less,60
-  examples/doql/app.doql.less,110
-  examples/fraq/app.doql.less,60
-  examples/redeploy/app.doql.less,60
+M[60]:
+  examples/doql/snapshot.yaml,42
+  examples/fraq/snapshot.yaml,41
+  examples/redeploy/migration.yaml,18
+  examples/redeploy/snapshot.yaml,41
+  goal.yaml,528
+  koru.yaml,146
+  local.dev.txt,12
   project.sh,36
-  src/op3/__init__.py,6
-  src/opstree/__init__.py,45
+  pyproject.toml,69
+  pyqual.yaml,9
+  src/op3/__init__.py,5
+  src/opstree/__init__.py,78
   src/opstree/_version.py,9
-  src/opstree/cli/__init__.py,2
-  src/opstree/cli/commands/__init__.py,2
-  src/opstree/cli/commands/convert.py,54
+  src/opstree/cli/__init__.py,1
+  src/opstree/cli/commands/__init__.py,1
+  src/opstree/cli/commands/convert.py,62
   src/opstree/cli/commands/drift.py,41
-  src/opstree/cli/commands/scan.py,70
+  src/opstree/cli/commands/scan.py,78
   src/opstree/cli/main.py,24
-  src/opstree/config_apply/__init__.py,2
+  src/opstree/config_apply/__init__.py,1
   src/opstree/diagnostics/__init__.py,41
   src/opstree/diagnostics/rules.py,150
-  src/opstree/drift/__init__.py,7
-  src/opstree/drift/detector.py,79
-  src/opstree/fleet/__init__.py,23
+  src/opstree/drift/__init__.py,8
+  src/opstree/drift/detector.py,80
+  src/opstree/fleet/__init__.py,26
+  src/opstree/fleet/formats.py,71
   src/opstree/fleet/model.py,78
-  src/opstree/fleet/scanner.py,223
-  src/opstree/formats/__init__.py,7
-  src/opstree/formats/less.py,193
-  src/opstree/formats/migration_yaml.py,109
+  src/opstree/fleet/scanner.py,221
+  src/opstree/formats/__init__.py,8
+  src/opstree/formats/less.py,319
+  src/opstree/formats/migration_yaml.py,125
   src/opstree/formats/registry.py,36
-  src/opstree/formats/snapshot_yaml.py,59
+  src/opstree/formats/snapshot_yaml.py,67
   src/opstree/integrations/__init__.py,25
-  src/opstree/integrations/compat.py,120
-  src/opstree/layers/__init__.py,13
-  src/opstree/layers/builtin.py,180
-  src/opstree/layers/tree.py,89
-  src/opstree/probes/__init__.py,9
-  src/opstree/probes/base.py,45
-  src/opstree/probes/builtin/__init__.py,2
-  src/opstree/probes/builtin/business_health.py,99
-  src/opstree/probes/builtin/endpoint_http.py,108
-  src/opstree/probes/builtin/os_linux.py,143
-  src/opstree/probes/builtin/physical_rpi.py,402
-  src/opstree/probes/builtin/rpi_diagnostics.py,529
-  src/opstree/probes/builtin/runtime_container.py,174
-  src/opstree/probes/builtin/service_containers.py,94
+  src/opstree/integrations/compat.py,121
+  src/opstree/layers/__init__.py,23
+  src/opstree/layers/builtin.py,185
+  src/opstree/layers/tree.py,105
+  src/opstree/probes/__init__.py,12
+  src/opstree/probes/base.py,50
+  src/opstree/probes/builtin/__init__.py,1
+  src/opstree/probes/builtin/business_health.py,122
+  src/opstree/probes/builtin/compositor.py,216
+  src/opstree/probes/builtin/endpoint_http.py,120
+  src/opstree/probes/builtin/exec_adapter.py,40
+  src/opstree/probes/builtin/os_linux.py,145
+  src/opstree/probes/builtin/physical_rpi.py,375
+  src/opstree/probes/builtin/rpi_diagnostics.py,523
+  src/opstree/probes/builtin/runtime_container.py,199
+  src/opstree/probes/builtin/service_containers.py,101
   src/opstree/probes/context.py,98
   src/opstree/probes/registry.py,81
-  src/opstree/scanner/__init__.py,9
-  src/opstree/scanner/build.py,159
+  src/opstree/scanner/__init__.py,13
+  src/opstree/scanner/adaptive.py,77
+  src/opstree/scanner/build.py,166
   src/opstree/scanner/linear.py,55
-  src/opstree/snapshot/__init__.py,9
-  src/opstree/snapshot/diff.py,89
-  src/opstree/snapshot/model.py,56
-  tests/conftest.py,30
-  tests/fixtures/sample.doql.less,33
-  tests/integration/test_cli.py,103
-  tests/integration/test_full_scan.py,156
-  tests/integration/test_rpi_hardware_pipeline.py,145
-  tests/test_op3.py,12
-  tests/unit/test_build_scanner.py,170
-  tests/unit/test_diagnostics.py,177
-  tests/unit/test_fleet.py,277
-  tests/unit/test_formats/test_less_adapter.py,87
-  tests/unit/test_integrations_compat.py,101
-  tests/unit/test_layers.py,91
-  tests/unit/test_probe_registry.py,154
-  tests/unit/test_rpi_diagnostics.py,294
-  tests/unit/test_snapshot.py,187
+  src/opstree/snapshot/__init__.py,12
+  src/opstree/snapshot/diff.py,100
+  src/opstree/snapshot/model.py,64
+  sumd.json,102
 D:
-  src/op3/__init__.py:
-  src/opstree/__init__.py:
-  src/opstree/_version.py:
-  src/opstree/cli/__init__.py:
-  src/opstree/cli/commands/__init__.py:
-  src/opstree/cli/commands/convert.py:
-    e: convert
-    convert(input_file;output_file;format)
-  src/opstree/cli/commands/drift.py:
-    e: drift
-    drift(intended;actual)
+  src/opstree/formats/less.py:
+    e: LessAdapter
+    LessAdapter: _strip_inline_comment(0),_is_terminated(0),_escape_value(0),_unescape_value(0),_render_key_value(3),parse(1),render(2),_parse_block(1)  # Parsuj i emituj .doql.less...
+  src/opstree/probes/builtin/runtime_container.py:
+    e: RuntimeContainerProbe
+    RuntimeContainerProbe: __init__(1),can_probe(1),scan(1),_detect_runtime(1),_list_containers(2),anomalies(1)  # Skanuje runtime kontenerów (docker/podman)...
+  src/opstree/probes/builtin/physical_rpi.py:
+    e: RpiPhysicalDisplayProbe
+    RpiPhysicalDisplayProbe: can_probe(1),scan(1),anomalies(1),_probe_board_model(1),_probe_config_txt(1),_extract_dsi_overlays(0),_scan_drm(1),_probe_wlr_randr(1),_merge_wlr_into_drm(1),_scan_backlights(1),_probe_framebuffers(1),_probe_i2c_buses(1),_probe_dsi_dmesg(1),_probe_kernel_modules(1),_probe_wayland_sockets(1),_probe_compositor_processes(1),_check_kms(1),_get_kms_driver(1)  # Full hardware probe for a Raspberry Pi-class board...
+  src/opstree/formats/migration_yaml.py:
+    e: MigrationYamlAdapter
+    MigrationYamlAdapter: parse(1),render(1)  # Parsuj i emituj migration.yaml (redeploy-compatible)...
   src/opstree/cli/commands/scan.py:
     e: scan
     scan(target;ssh;output;format;layers)
-  src/opstree/cli/main.py:
-    e: cli
-    cli()
-  src/opstree/config_apply/__init__.py:
-  src/opstree/diagnostics/__init__.py:
-  src/opstree/diagnostics/rules.py:
-    e: Diagnostic,Rule,RuleEngine
-    Diagnostic: to_dict(0)  # A single finding emitted by a rule.
-    Rule: __post_init__(0),evaluate(1)  # Declarative diagnostic rule over subject ``T``.
-    RuleEngine: __init__(1),rules(0),evaluate(1),any_error(1)  # Runs a list of :class:`Rule` objects against a subject.
-  src/opstree/drift/__init__.py:
-  src/opstree/drift/detector.py:
-    e: DriftReport,DriftDetector
-    DriftReport:  # Report of drift between intended and actual state.
-    DriftDetector: detect(2),_summarize_changes(1)  # Detect drift between intended state (from config) and actual
-  src/opstree/fleet/__init__.py:
-  src/opstree/fleet/model.py:
-    e: FleetVariance,FleetSnapshot
-    FleetVariance: is_uniform(0),diverging_paths(0)  # Summary of fields that disagree across fleet members.
-    FleetSnapshot: size(0),for_target(1)  # N :class:`Snapshot` instances plus their cross-host variance
+  src/opstree/cli/commands/convert.py:
+    e: convert
+    convert(input_file;output_file;format)
   src/opstree/fleet/scanner.py:
     e: _flatten,_flatten_snapshot,_canonicalise,_layer_of,compute_variance,scan_fleet
     _flatten(prefix;value;out)
@@ -113,67 +94,14 @@ D:
     _layer_of(path)
     compute_variance(snapshots)
     scan_fleet(scanner;target_execute)
-  src/opstree/formats/__init__.py:
-  src/opstree/formats/less.py:
-    e: LessAdapter
-    LessAdapter: parse(1),render(2),_parse_block(1)  # Parsuj i emituj .doql.less.
-  src/opstree/formats/migration_yaml.py:
-    e: MigrationYamlAdapter
-    MigrationYamlAdapter: parse(1),render(1)  # Parsuj i emituj migration.yaml (redeploy-compatible).
-  src/opstree/formats/registry.py:
-    e: register_format,FormatRegistry
-    FormatRegistry: register(3),get(2),available(1),serialize(3)  # Registry for format adapters (wraps fraq's FormatRegistry).
-    register_format(name;adapter)
-  src/opstree/formats/snapshot_yaml.py:
-    e: SnapshotYamlAdapter
-    SnapshotYamlAdapter: parse(1),render(1)  # Native op3 snapshot format adapter.
-  src/opstree/integrations/__init__.py:
-  src/opstree/integrations/compat.py:
-    e: make_compat_helpers,CompatHelpers
-    CompatHelpers:  # Bundle of callables produced by :func:`make_compat_helpers`.
-    make_compat_helpers()
-  src/opstree/layers/__init__.py:
-  src/opstree/layers/builtin.py:
-    e: PhysicalDisplayData,OsKernelData,OsConfigData,RuntimeContainerData,RuntimeCompositorData,ServiceContainersData,EndpointHttpData,BusinessHealthData,PhysicalLayer,OsLayer,RuntimeLayer,ServiceLayer,EndpointLayer,BusinessLayer
-    PhysicalDisplayData:
-    OsKernelData:
-    OsConfigData:
-    RuntimeContainerData:
-    RuntimeCompositorData:
-    ServiceContainersData:
-    EndpointHttpData:
-    BusinessHealthData:
-    PhysicalLayer:  # Physical infrastructure layer.
-    OsLayer:  # Operating system layer.
-    RuntimeLayer:  # Runtime environment layer.
-    ServiceLayer:  # Services layer.
-    EndpointLayer:  # Network endpoints layer.
-    BusinessLayer:  # Business logic layer.
+  src/opstree/probes/builtin/compositor.py:
+    e: CompositorProbe,KanshiReconcileProbe
+    CompositorProbe: can_probe(1),scan(1),anomalies(1),_detect_compositor(0),_compositor_version(1),_list_kanshi_profiles(0),_detect_active_profile(0)  # Detect Wayland compositor and kanshi availability...
+    KanshiReconcileProbe: can_probe(1),scan(1),anomalies(1),_suggest_profile(0)  # Follow-up probe: suggest a kanshi profile when DSI+HDMI are ...
   src/opstree/layers/tree.py:
     e: LayerDefinition,LayerTree
-    LayerDefinition: to_fraq_node(0)  # Definicja jednej warstwy w drzewie.
-    LayerTree: __init__(0),register(1),get(1),topological_order(0),to_fraq_node(0)  # Drzewo warstw — topological ordering, dependency resolution.
-  src/opstree/probes/__init__.py:
-  src/opstree/probes/base.py:
-    e: ProbeContext,ProbeResult,Probe
-    ProbeContext: __post_init__(0)  # Kontekst dla probe — nie wie o SSH, click, nic konkretnego.
-    ProbeResult:  # Wynik probe'a.
-    Probe: can_probe(1),scan(1),anomalies(1)  # Kontrakt probe'a.
-  src/opstree/probes/builtin/__init__.py:
-  src/opstree/probes/builtin/business_health.py:
-    e: BusinessHealthProbe
-    BusinessHealthProbe: __init__(2),can_probe(1),scan(1),_check_health_endpoint(2),anomalies(1)  # Skanuje zdrowie aplikacji.
-  src/opstree/probes/builtin/endpoint_http.py:
-    e: EndpointHttpProbe
-    EndpointHttpProbe: __init__(1),can_probe(1),scan(1),_check_endpoint(3),anomalies(1)  # Skanuje HTTP endpoints.
-  src/opstree/probes/builtin/os_linux.py:
-    e: OsKernelProbe,OsConfigProbe
-    OsKernelProbe: can_probe(1),scan(1),_get_kernel_version(1),_get_arch(1),_get_hostname(1),_get_uptime(1),anomalies(1)  # Skanuje jądro Linux.
-    OsConfigProbe: can_probe(1),scan(1),_read_config_txt(1),_read_cmdline(1),anomalies(1)  # Skanuje konfigurację systemu.
-  src/opstree/probes/builtin/physical_rpi.py:
-    e: _Exec,RpiPhysicalDisplayProbe
-    _Exec: run(3),lines(0),text(1),int_(1)  # Uniform adapter over the two shapes ``ProbeContext.execute``
-    RpiPhysicalDisplayProbe: can_probe(1),scan(1),anomalies(1),_probe_board_model(1),_probe_config_txt(1),_extract_dsi_overlays(1),_scan_drm(1),_probe_wlr_randr(1),_merge_wlr_into_drm(2),_scan_backlights(1),_probe_framebuffers(1),_probe_i2c_buses(1),_probe_dsi_dmesg(1),_probe_kernel_modules(1),_probe_wayland_sockets(1),_probe_compositor_processes(1),_check_kms(1),_get_kms_driver(1)  # Full hardware probe for a Raspberry Pi-class board.
+    LayerDefinition: to_fraq_node(0)  # Definicja jednej warstwy w drzewie...
+    LayerTree: __init__(0),register(1),get(1),topological_order(0),to_fraq_node(0)  # Drzewo warstw — topological ordering, dependency resolution...
   src/opstree/probes/builtin/rpi_diagnostics.py:
     e: _dsi_outputs,_has_dsi_overlay,_dsi_connected,_backlights,_i2c_buses,_kernel_modules,_backlight_chip_addr,_all_ok,_backlight_power_off_rules,_i2c_chip_missing_rules,_all_ok_rule,diagnose_display_layer
     _dsi_outputs(hw)
@@ -188,189 +116,147 @@ D:
     _i2c_chip_missing_rules(hw)
     _all_ok_rule()
     diagnose_display_layer(layer_data)
-  src/opstree/probes/builtin/runtime_container.py:
-    e: RuntimeContainerProbe
-    RuntimeContainerProbe: __init__(1),can_probe(1),scan(1),_detect_runtime(1),_list_containers(2),anomalies(1)  # Skanuje runtime kontenerów (docker/podman).
-  src/opstree/probes/builtin/service_containers.py:
-    e: ServiceContainersProbe
-    ServiceContainersProbe: can_probe(1),scan(1),_list_systemd_services(1),_is_service_enabled(2),anomalies(1)  # Skanuje systemd services.
-  src/opstree/probes/context.py:
-    e: ExecuteResult,ProbeContext,LocalContext,MockContext,SSHContext
-    ExecuteResult: ok(0)  # Result of command execution.
-    ProbeContext: __init__(3)  # Base context for probe execution.
-    LocalContext: __init__(1)  # Local execution context (runs commands on localhost).
-    MockContext: __init__(2)  # Mock context for testing with predefined responses.
-    SSHContext: __init__(3)  # SSH execution context for remote scanning.
-  src/opstree/probes/registry.py:
-    e: get_default_registry,register_probe,ProbeRegistry
-    ProbeRegistry: __init__(0),register(1),get(1),all(0),clear(0)  # Registry for probes keyed by ``layer_id``.
-    get_default_registry()
-    register_probe(probe_class)
-  src/opstree/scanner/__init__.py:
+  src/opstree/scanner/adaptive.py:
+    e: AdaptiveScanner
+    AdaptiveScanner(LinearScanner): __init__(1),register_followup(2),scan(2)  # Scanner that runs follow-up probes when anomalies are detect...
+  src/opstree/probes/builtin/os_linux.py:
+    e: OsKernelProbe,OsConfigProbe
+    OsKernelProbe: can_probe(1),scan(1),_get_kernel_version(1),_get_arch(1),_get_hostname(1),_get_uptime(1),anomalies(1)  # Skanuje jądro Linux...
+    OsConfigProbe: can_probe(1),scan(1),_read_config_txt(1),_read_cmdline(1),anomalies(1)  # Skanuje konfigurację systemu...
   src/opstree/scanner/build.py:
     e: _default_probe_factory,_resolve_dependencies,build_layer_tree,build_scanner
     _default_probe_factory(layer_id)
     _resolve_dependencies(layer_ids)
     build_layer_tree(layer_ids)
     build_scanner(layer_ids)
+  src/opstree/diagnostics/rules.py:
+    e: Diagnostic,Rule,RuleEngine
+    Diagnostic: to_dict(0)  # A single finding emitted by a rule.
+
+Kept minimal and serial...
+    Rule(<ast.Subscript object at 0x74664c925090>): __post_init__(0),evaluate(1)  # Declarative diagnostic rule over subject ``T``.
+
+Exactly one...
+    RuleEngine(<ast.Subscript object at 0x74664c91d190>): __init__(1),evaluate(1),any_error(1)  # Runs a list of :class:`Rule` objects against a subject.
+
+Sta...
+  src/opstree/probes/builtin/exec_adapter.py:
+    e: ProbeExec
+    ProbeExec: run(2),text(1),lines(0),int_(1)
+  src/opstree/probes/builtin/endpoint_http.py:
+    e: EndpointHttpProbe
+    EndpointHttpProbe: __init__(1),can_probe(1),scan(1),_check_endpoint(3),anomalies(1)  # Skanuje HTTP endpoints...
   src/opstree/scanner/linear.py:
-    e: scan_device,LinearScanner
-    LinearScanner: __init__(1),scan(2)  # Simple scanner that processes layers in topological order.
+    e: LinearScanner,scan_device
+    LinearScanner: __init__(1),scan(2)  # Simple scanner that processes layers in topological order...
     scan_device(target;execute;layer_tree)
-  src/opstree/snapshot/__init__.py:
+  src/opstree/fleet/formats.py:
+    e: _unflatten,render_common_as_snapshot,render_variant_matrix
+    _unflatten(paths)
+    render_common_as_snapshot(fleet)
+    render_variant_matrix(fleet)
+  src/opstree/probes/builtin/business_health.py:
+    e: BusinessHealthProbe
+    BusinessHealthProbe: __init__(2),can_probe(1),scan(1),_check_health_endpoint(2),anomalies(1)  # Skanuje zdrowie aplikacji...
+  src/opstree/formats/snapshot_yaml.py:
+    e: SnapshotYamlAdapter
+    SnapshotYamlAdapter: parse(1),render(1)  # Native op3 snapshot format adapter...
+  src/opstree/cli/commands/drift.py:
+    e: drift
+    drift(intended;actual)
+  src/opstree/probes/builtin/service_containers.py:
+    e: ServiceContainersProbe
+    ServiceContainersProbe: can_probe(1),scan(1),_list_systemd_services(1),_is_service_enabled(2),anomalies(1)  # Skanuje systemd services...
+  src/opstree/drift/detector.py:
+    e: DriftReport,DriftDetector
+    DriftReport:  # Report of drift between intended and actual state...
+    DriftDetector: detect(2),_summarize_changes(1)  # Detect drift between intended state (from config) and actual...
   src/opstree/snapshot/diff.py:
-    e: snapshot_diff,_diff_layer_data,Change
-    Change:  # Represents a single change between two snapshots.
+    e: Change,snapshot_diff,_diff_layer_data
+    Change:  # Represents a single change between two snapshots...
     snapshot_diff(a;b)
     _diff_layer_data(a_layer;b_layer)
+  src/opstree/probes/context.py:
+    e: ExecuteResult,ProbeContext,LocalContext,MockContext,SSHContext
+    ExecuteResult:  # Result of command execution...
+    ProbeContext: __init__(3)  # Base context for probe execution...
+    LocalContext(ProbeContext): __init__(1)  # Local execution context (runs commands on localhost)...
+    MockContext(ProbeContext): __init__(2)  # Mock context for testing with predefined responses...
+    SSHContext(ProbeContext): __init__(3)  # SSH execution context for remote scanning...
+  src/opstree/probes/registry.py:
+    e: ProbeRegistry,get_default_registry,register_probe
+    ProbeRegistry: __init__(0),register(1),get(1),all(0),clear(0)  # Registry for probes keyed by ``layer_id``.
+
+Each instance ow...
+    get_default_registry()
+    register_probe(probe_class)
+  src/opstree/probes/base.py:
+    e: ProbeContext,ProbeResult,Probe
+    ProbeContext: __post_init__(0)  # Kontekst dla probe — nie wie o SSH, click, nic konkretnego...
+    ProbeResult:  # Wynik probe'a...
+    Probe(Protocol): can_probe(1),scan(1),anomalies(1)  # Kontrakt probe'a...
+  src/opstree/formats/registry.py:
+    e: FormatRegistry,register_format
+    FormatRegistry: register(2),get(1),available(0),serialize(2)  # Registry for format adapters (wraps fraq's FormatRegistry)...
+    register_format(name;adapter)
+  src/opstree/cli/main.py:
+    e: cli
+    cli()
+  src/opstree/integrations/compat.py:
+    e: CompatHelpers,make_compat_helpers
+    CompatHelpers:  # Bundle of callables produced by :func:`make_compat_helpers`...
+    make_compat_helpers()
+  src/opstree/fleet/model.py:
+    e: FleetVariance,FleetSnapshot
+    FleetVariance(BaseModel):  # Summary of fields that disagree across fleet members.
+
+``fie...
+    FleetSnapshot(BaseModel): for_target(1)  # N :class:`Snapshot` instances plus their cross-host variance...
   src/opstree/snapshot/model.py:
     e: LayerData,Snapshot,PartialSnapshot
-    LayerData:  # Dane jednej warstwy.
-    Snapshot: layer(1),query(1),to_yaml(0),load(2)  # Pełna migawka urządzenia/systemu.
-    PartialSnapshot:  # Niepełna migawka — np. z parsowania LESS-a gdzie nie ma wszy
-  tests/conftest.py:
-    e: layer_tree
-    layer_tree()
-  tests/integration/test_cli.py:
-    e: runner,test_cli_help,test_cli_scan_help,test_cli_convert_help,test_cli_convert_less_to_snapshot_yaml,test_cli_convert_less_to_migration_yaml,test_cli_convert_less_to_less
-    runner()
-    test_cli_help(runner)
-    test_cli_scan_help(runner)
-    test_cli_convert_help(runner)
-    test_cli_convert_less_to_snapshot_yaml(runner;tmp_path)
-    test_cli_convert_less_to_migration_yaml(runner;tmp_path)
-    test_cli_convert_less_to_less(runner;tmp_path)
-  tests/integration/test_full_scan.py:
-    e: test_full_scan_with_mock_context,test_rpi_probe_anomaly_detection
-    test_full_scan_with_mock_context()
-    test_rpi_probe_anomaly_detection()
-  tests/integration/test_rpi_hardware_pipeline.py:
-    e: _common_responses,test_probe_emits_full_hardware_dict,test_probe_output_feeds_diagnostics_to_clean_system,test_probe_output_feeds_diagnostics_to_broken_system
-    _common_responses(extra)
-    test_probe_emits_full_hardware_dict()
-    test_probe_output_feeds_diagnostics_to_clean_system()
-    test_probe_output_feeds_diagnostics_to_broken_system()
-  tests/test_op3.py:
-    e: test_placeholder,test_import
-    test_placeholder()
-    test_import()
-  tests/unit/test_build_scanner.py:
-    e: test_build_layer_tree_registers_requested_leaf,test_build_layer_tree_pulls_transitive_dependencies,test_build_layer_tree_orders_deps_before_dependents,test_build_layer_tree_rejects_unknown_layer,test_build_layer_tree_deduplicates_shared_dependencies,test_build_scanner_uses_isolated_registry,test_build_scanner_registry_not_shared_with_default,test_build_scanner_populates_probes_for_requested_layers,test_build_scanner_include_default_probes_false_leaves_registry_empty,test_build_scanner_extra_probes_are_appended,test_build_scanner_end_to_end_scan,test_build_scanner_does_not_leak_into_subsequent_calls
-    test_build_layer_tree_registers_requested_leaf()
-    test_build_layer_tree_pulls_transitive_dependencies()
-    test_build_layer_tree_orders_deps_before_dependents()
-    test_build_layer_tree_rejects_unknown_layer()
-    test_build_layer_tree_deduplicates_shared_dependencies()
-    test_build_scanner_uses_isolated_registry()
-    test_build_scanner_registry_not_shared_with_default()
-    test_build_scanner_populates_probes_for_requested_layers()
-    test_build_scanner_include_default_probes_false_leaves_registry_empty()
-    test_build_scanner_extra_probes_are_appended()
-    test_build_scanner_end_to_end_scan()
-    test_build_scanner_does_not_leak_into_subsequent_calls()
-  tests/unit/test_diagnostics.py:
-    e: test_rule_requires_exactly_one_of_predicate_or_dynamic,test_predicate_rule_requires_message,test_predicate_rule_fires_and_returns_diagnostic,test_predicate_rule_does_not_fire_returns_empty,test_dynamic_rule_fans_out_multiple_diagnostics,test_static_message_and_fix_strings,test_rule_evidence_callable,test_engine_aggregates_all_rules,test_engine_any_error_detects_firing_error_rule,test_engine_any_error_respects_exclude,test_diagnostic_to_dict_is_plain
-    test_rule_requires_exactly_one_of_predicate_or_dynamic()
-    test_predicate_rule_requires_message()
-    test_predicate_rule_fires_and_returns_diagnostic()
-    test_predicate_rule_does_not_fire_returns_empty()
-    test_dynamic_rule_fans_out_multiple_diagnostics()
-    test_static_message_and_fix_strings()
-    test_rule_evidence_callable()
-    test_engine_aggregates_all_rules()
-    test_engine_any_error_detects_firing_error_rule()
-    test_engine_any_error_respects_exclude()
-    test_diagnostic_to_dict_is_plain()
-  tests/unit/test_fleet.py:
-    e: _snapshot,test_compute_variance_empty_returns_uniform,test_compute_variance_single_snapshot_is_uniform,test_compute_variance_identical_fleet_has_no_fields,test_compute_variance_records_single_field_divergence,test_compute_variance_counts_diverging_fields_per_layer,test_compute_variance_records_missing_layer_as_none,test_compute_variance_is_order_independent,test_compute_variance_handles_nested_dict_equality,_kernel_responses,test_scan_fleet_empty_returns_empty_fleet_snapshot,test_scan_fleet_scans_each_target,test_scan_fleet_preserves_iteration_order_in_targets,test_scan_fleet_detects_drifted_kernel,test_scan_fleet_uniform_when_all_hosts_identical,test_scan_fleet_propagates_scanner_failure,test_fleet_snapshot_for_target_lookup
-    _snapshot(target)
-    test_compute_variance_empty_returns_uniform()
-    test_compute_variance_single_snapshot_is_uniform()
-    test_compute_variance_identical_fleet_has_no_fields()
-    test_compute_variance_records_single_field_divergence()
-    test_compute_variance_counts_diverging_fields_per_layer()
-    test_compute_variance_records_missing_layer_as_none()
-    test_compute_variance_is_order_independent()
-    test_compute_variance_handles_nested_dict_equality()
-    _kernel_responses(version)
-    test_scan_fleet_empty_returns_empty_fleet_snapshot()
-    test_scan_fleet_scans_each_target()
-    test_scan_fleet_preserves_iteration_order_in_targets()
-    test_scan_fleet_detects_drifted_kernel()
-    test_scan_fleet_uniform_when_all_hosts_identical()
-    test_scan_fleet_propagates_scanner_failure()
-    test_fleet_snapshot_for_target_lookup()
-  tests/unit/test_formats/test_less_adapter.py:
-    e: test_less_adapter_parse,test_less_adapter_render,test_less_adapter_roundtrip
-    test_less_adapter_parse()
-    test_less_adapter_render()
-    test_less_adapter_roundtrip()
-  tests/unit/test_integrations_compat.py:
-    e: _make,test_op3_available_true,test_op3_enabled_truthy_values,test_op3_enabled_falsy_values,test_op3_enabled_env_absent,test_should_use_op3,test_require_op3_passes_when_available,test_make_mock_context_round_trip,test_make_ssh_context_factory,test_make_scanner_uses_defaults,test_make_scanner_respects_override,test_compat_helpers_frozen
-    _make(monkeypatch;env_value)
-    test_op3_available_true()
-    test_op3_enabled_truthy_values(monkeypatch)
-    test_op3_enabled_falsy_values(monkeypatch)
-    test_op3_enabled_env_absent(monkeypatch)
-    test_should_use_op3(monkeypatch)
-    test_require_op3_passes_when_available()
-    test_make_mock_context_round_trip()
-    test_make_ssh_context_factory()
-    test_make_scanner_uses_defaults()
-    test_make_scanner_respects_override()
-    test_compat_helpers_frozen()
-  tests/unit/test_layers.py:
-    e: test_layer_tree_registration,test_layer_tree_duplicate_registration,test_layer_tree_topological_order,test_layer_tree_cycle_detection,test_builtin_layers_exist,test_builtin_layer_dependencies
-    test_layer_tree_registration()
-    test_layer_tree_duplicate_registration()
-    test_layer_tree_topological_order()
-    test_layer_tree_cycle_detection()
-    test_builtin_layers_exist()
-    test_builtin_layer_dependencies()
-  tests/unit/test_probe_registry.py:
-    e: test_registry_instances_are_isolated,test_register_appends_multiple_probes_for_same_layer,test_get_returns_empty_list_for_unknown_layer,test_get_returns_copy_so_mutation_doesnt_leak,test_all_returns_deep_copy,test_clear_empties_registry,test_get_default_registry_returns_module_singleton,test_register_probe_decorator_uses_default_registry,test_decorator_does_not_pollute_user_registries,_DummyProbe
-    _DummyProbe: __init__(2),can_probe(1),scan(1),anomalies(1)  # Bare-minimum structural probe used throughout this file.
-    test_registry_instances_are_isolated()
-    test_register_appends_multiple_probes_for_same_layer()
-    test_get_returns_empty_list_for_unknown_layer()
-    test_get_returns_copy_so_mutation_doesnt_leak()
-    test_all_returns_deep_copy()
-    test_clear_empties_registry()
-    test_get_default_registry_returns_module_singleton()
-    test_register_probe_decorator_uses_default_registry()
-    test_decorator_does_not_pollute_user_registries()
-  tests/unit/test_rpi_diagnostics.py:
-    e: _hw,_names,test_healthy_system_emits_only_all_ok,test_no_dsi_overlay_fires_when_overlay_missing,test_display_auto_detect_conflict,test_dsi_overlay_no_drm_connector,test_dsi_no_edid_panel_missing,test_dsi_connector_not_connected,test_dsi_connected_no_backlight,test_dsi_backlight_init_failed_extracts_error_code,test_no_drm_kernel_driver,test_dsi_driver_not_loaded,test_i2c_arm_not_enabled,test_i2c_backlight_bus_empty,test_compositor_not_running,test_wayland_socket_missing,test_chromium_not_running_info_only,test_dpms_off,test_no_wayland_output,test_all_ok_no_wayland,test_backlight_power_off_dynamic_rule,test_backlight_brightness_zero_dynamic_rule,test_i2c_chip_missing_dynamic_rule,test_rule_names_are_unique
-    _hw()
-    _names(diags)
-    test_healthy_system_emits_only_all_ok()
-    test_no_dsi_overlay_fires_when_overlay_missing()
-    test_display_auto_detect_conflict()
-    test_dsi_overlay_no_drm_connector()
-    test_dsi_no_edid_panel_missing()
-    test_dsi_connector_not_connected()
-    test_dsi_connected_no_backlight()
-    test_dsi_backlight_init_failed_extracts_error_code()
-    test_no_drm_kernel_driver()
-    test_dsi_driver_not_loaded()
-    test_i2c_arm_not_enabled()
-    test_i2c_backlight_bus_empty()
-    test_compositor_not_running()
-    test_wayland_socket_missing()
-    test_chromium_not_running_info_only()
-    test_dpms_off()
-    test_no_wayland_output()
-    test_all_ok_no_wayland()
-    test_backlight_power_off_dynamic_rule()
-    test_backlight_brightness_zero_dynamic_rule()
-    test_i2c_chip_missing_dynamic_rule()
-    test_rule_names_are_unique()
-  tests/unit/test_snapshot.py:
-    e: test_layer_data_creation,test_snapshot_creation,test_snapshot_layer_accessor,test_snapshot_yaml_roundtrip,test_snapshot_diff_added_layer,test_snapshot_diff_removed_layer,test_snapshot_diff_modified_data
-    test_layer_data_creation()
-    test_snapshot_creation()
-    test_snapshot_layer_accessor()
-    test_snapshot_yaml_roundtrip()
-    test_snapshot_diff_added_layer()
-    test_snapshot_diff_removed_layer()
-    test_snapshot_diff_modified_data()
+    LayerData(BaseModel):  # Dane jednej warstwy...
+    Snapshot(BaseModel): layer(1),query(1),to_yaml(0),load(1)  # Pełna migawka urządzenia/systemu...
+    PartialSnapshot(BaseModel):  # Niepełna migawka — np. z parsowania LESS-a gdzie nie ma wszy...
+  koru.yaml:
+  pyqual.yaml:
+  pyproject.toml:
+  examples/fraq/snapshot.yaml:
+  examples/redeploy/snapshot.yaml:
+  sumd.json:
+  goal.yaml:
+  project.sh:
+  examples/doql/snapshot.yaml:
+  local.dev.txt:
+  examples/redeploy/migration.yaml:
+  src/opstree/probes/builtin/__init__.py:
+  src/opstree/_version.py:
+  src/opstree/__init__.py:
+  src/opstree/formats/__init__.py:
+  src/opstree/diagnostics/__init__.py:
+  src/opstree/config_apply/__init__.py:
+  src/opstree/cli/__init__.py:
+  src/opstree/cli/commands/__init__.py:
+  src/opstree/scanner/__init__.py:
+  src/opstree/probes/__init__.py:
+  src/opstree/layers/__init__.py:
+  src/opstree/fleet/__init__.py:
+  src/opstree/integrations/__init__.py:
+  src/opstree/snapshot/__init__.py:
+  src/opstree/drift/__init__.py:
+  src/op3/__init__.py:
+  src/opstree/layers/builtin.py:
+    e: PhysicalDisplayData,OsKernelData,OsConfigData,RuntimeContainerData,RuntimeCompositorData,ServiceContainersData,EndpointHttpData,BusinessHealthData,PhysicalLayer,OsLayer,RuntimeLayer,ServiceLayer,EndpointLayer,BusinessLayer
+    PhysicalDisplayData(BaseModel):
+    OsKernelData(BaseModel):
+    OsConfigData(BaseModel):
+    RuntimeContainerData(BaseModel):
+    RuntimeCompositorData(BaseModel):
+    ServiceContainersData(BaseModel):
+    EndpointHttpData(BaseModel):
+    BusinessHealthData(BaseModel):
+    PhysicalLayer:  # Physical infrastructure layer...
+    OsLayer:  # Operating system layer...
+    RuntimeLayer:  # Runtime environment layer...
+    ServiceLayer:  # Services layer...
+    EndpointLayer:  # Network endpoints layer...
+    BusinessLayer:  # Business logic layer...

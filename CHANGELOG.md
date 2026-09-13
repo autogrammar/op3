@@ -78,6 +78,26 @@ merging semantics. A native implementation based on
 - refactor: assorted codebase refactorings
 - feat(goal): update docs / configuration management integration
 
+## [0.2.7] - 2026-09-13
+
+### Docs
+- Update README.md
+- Update project/README.md
+- Update project/context.md
+
+### Other
+- Update .koru/event-store.jsonl
+- Update .koru/project.json
+- Update .planfile/.koru/policy.yaml
+- Update .planfile/.koru/run-autonomous.sh
+- Update .planfile/.koru/setup-autopilot-host.sh
+- Update .planfile/.koru/shell-env.sh
+- Update .planfile/.store.lock
+- Update .planfile/config.yaml
+- Update .planfile/events/.logs.dsl.date
+- Update .planfile/events/.logs.dsl.v1
+- ... and 20 more files
+
 ## [0.2.6] - 2026-06-29
 
 ### Docs

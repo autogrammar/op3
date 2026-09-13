@@ -1,70 +1,166 @@
-# code2llm | 70f 9947L | python:44,yaml:12,md:10,toml:1,shell:1,txt:1,json:1 | 2026-04-21
-# CC̄=1.1 | critical:5/432 | dups:0 | cycles:1
+# code2llm | 60f 5603L | python:49,yaml:7,toml:1,json:1,shell:1,txt:1 | 2026-09-08
+# generated in 0.02s
+# CC̅=3.8 | critical:5/155 | dups:0 | cycles:1
 
 HEALTH[5]:
-  🟡 CC    _list_containers CC=18 (limit:15)
-  🟡 CC    _probe_wlr_randr CC=17 (limit:15)
   🟡 CC    render CC=16 (limit:15)
   🟡 CC    render CC=22 (limit:15)
   🟡 CC    scan CC=16 (limit:15)
+  🟡 CC    _probe_wlr_randr CC=17 (limit:15)
+  🟡 CC    _list_containers CC=18 (limit:15)
 
 REFACTOR[2]:
   1. split 5 high-CC methods  (CC>15)
   2. break 1 circular dependencies
 
-PIPELINES[101]:
-  [1] Src [detect]: detect → snapshot_diff → _diff_layer_data
+PIPELINES[122]:
+  [1] Src [can_probe]: can_probe
       PURITY: 100% pure
-  [2] Src [_summarize_changes]: _summarize_changes
+  [2] Src [scan]: scan
       PURITY: 100% pure
-  [3] Src [to_dict]: to_dict
+  [3] Src [_get_kernel_version]: _get_kernel_version
       PURITY: 100% pure
-  [4] Src [__post_init__]: __post_init__
+  [4] Src [_get_arch]: _get_arch
       PURITY: 100% pure
-  [5] Src [evaluate]: evaluate
+  [5] Src [_get_hostname]: _get_hostname
+      PURITY: 100% pure
+  [6] Src [_get_uptime]: _get_uptime
+      PURITY: 100% pure
+  [7] Src [can_probe]: can_probe
+      PURITY: 100% pure
+  [8] Src [scan]: scan
+      PURITY: 100% pure
+  [9] Src [_read_config_txt]: _read_config_txt
+      PURITY: 100% pure
+  [10] Src [_read_cmdline]: _read_cmdline
+      PURITY: 100% pure
+  [11] Src [can_probe]: can_probe
+      PURITY: 100% pure
+  [12] Src [scan]: scan
+      PURITY: 100% pure
+  [13] Src [_list_systemd_services]: _list_systemd_services
+      PURITY: 100% pure
+  [14] Src [_is_service_enabled]: _is_service_enabled
+      PURITY: 100% pure
+  [15] Src [anomalies]: anomalies
+      PURITY: 100% pure
+  [16] Src [__init__]: __init__
+      PURITY: 100% pure
+  [17] Src [__init__]: __init__
+      PURITY: 100% pure
+  [18] Src [__init__]: __init__
+      PURITY: 100% pure
+  [19] Src [_kernel_modules]: _kernel_modules
+      PURITY: 100% pure
+  [20] Src [_backlight_power_off_rules]: _backlight_power_off_rules → _backlights
+      PURITY: 100% pure
+  [21] Src [_i2c_chip_missing_rules]: _i2c_chip_missing_rules → _backlights
+      PURITY: 100% pure
+  [22] Src [_all_ok_rule]: _all_ok_rule → _all_ok → _dsi_outputs
+      PURITY: 100% pure
+  [23] Src [diagnose_display_layer]: diagnose_display_layer
+      PURITY: 100% pure
+  [24] Src [register]: register
+      PURITY: 100% pure
+  [25] Src [get]: get
+      PURITY: 100% pure
+  [26] Src [available]: available
+      PURITY: 100% pure
+  [27] Src [serialize]: serialize
+      PURITY: 100% pure
+  [28] Src [register_format]: register_format
+      PURITY: 100% pure
+  [29] Src [parse]: parse
+      PURITY: 100% pure
+  [30] Src [render]: render
+      PURITY: 100% pure
+  [31] Src [run]: run
+      PURITY: 100% pure
+  [32] Src [text]: text
+      PURITY: 100% pure
+  [33] Src [lines]: lines
+      PURITY: 100% pure
+  [34] Src [int_]: int_
+      PURITY: 100% pure
+  [35] Src [parse]: parse
+      PURITY: 100% pure
+  [36] Src [render]: render
+      PURITY: 100% pure
+  [37] Src [_strip_inline_comment]: _strip_inline_comment
+      PURITY: 100% pure
+  [38] Src [_is_terminated]: _is_terminated
+      PURITY: 100% pure
+  [39] Src [_escape_value]: _escape_value
+      PURITY: 100% pure
+  [40] Src [_unescape_value]: _unescape_value
+      PURITY: 100% pure
+  [41] Src [_render_key_value]: _render_key_value
+      PURITY: 100% pure
+  [42] Src [parse]: parse
+      PURITY: 100% pure
+  [43] Src [render]: render
+      PURITY: 100% pure
+  [44] Src [_parse_block]: _parse_block
+      PURITY: 100% pure
+  [45] Src [cli]: cli
+      PURITY: 100% pure
+  [46] Src [drift]: drift
+      PURITY: 100% pure
+  [47] Src [register]: register
+      PURITY: 100% pure
+  [48] Src [get]: get
+      PURITY: 100% pure
+  [49] Src [clear]: clear
+      PURITY: 100% pure
+  [50] Src [register_probe]: register_probe
       PURITY: 100% pure
 
 LAYERS:
-  src/                            CC̄=3.7    ←in:0  →out:0
-  │ !! rpi_diagnostics            528L  0C   12m  CC=10     ←0
-  │ !! physical_rpi               401L  2C   22m  CC=17     ←0
-  │ scanner                    222L  0C    6m  CC=11     ←0
-  │ !! less                       192L  1C    3m  CC=22     ←0
-  │ builtin                    179L  14C    0m  CC=0.0    ←0
-  │ !! runtime_container          173L  1C    6m  CC=18     ←0
-  │ rules                      149L  3C    6m  CC=7      ←0
-  │ os_linux                   142L  2C   12m  CC=7      ←0
-  │ compat                     119L  1C    1m  CC=1      ←0
-  │ !! migration_yaml             108L  1C    2m  CC=16     ←0
-  │ endpoint_http              107L  1C    5m  CC=6      ←0
-  │ business_health             98L  1C    5m  CC=6      ←0
-  │ context                     97L  5C    4m  CC=2      ←0
-  │ service_containers          93L  1C    5m  CC=4      ←0
-  │ tree                        88L  2C    6m  CC=11     ←0
-  │ diff                        88L  1C    2m  CC=4      ←1
-  │ registry                    80L  1C    7m  CC=2      ←1
-  │ detector                    78L  2C    2m  CC=4      ←0
-  │ model                       77L  2C    1m  CC=1      ←0
-  │ !! scan                        69L  0C    1m  CC=16     ←0
-  │ snapshot_yaml               58L  1C    2m  CC=5      ←0
-  │ model                       55L  3C    4m  CC=1      ←2
-  │ linear                      54L  1C    3m  CC=6      ←0
-  │ convert                     53L  0C    1m  CC=11     ←0
-  │ base                        44L  3C    4m  CC=2      ←0
-  │ __init__                    44L  0C    0m  CC=0.0    ←0
-  │ drift                       40L  0C    1m  CC=5      ←0
-  │ __init__                    40L  0C    0m  CC=0.0    ←0
-  │ registry                    35L  1C    5m  CC=1      ←0
-  │ __init__                    24L  0C    0m  CC=0.0    ←0
-  │ main                        23L  0C    1m  CC=1      ←0
-  │ __init__                    22L  0C    0m  CC=0.0    ←0
+  src/                            CC̄=3.8    ←in:0  →out:0
+  │ !! rpi_diagnostics            523L  0C   12m  CC=10     ←0
+  │ !! physical_rpi               375L  1C   18m  CC=17     ←0
+  │ !! less                       319L  1C    8m  CC=22     ←0
+  │ scanner                    221L  0C    6m  CC=11     ←1
+  │ compositor                 216L  2C   11m  CC=11     ←0
+  │ !! runtime_container          199L  1C    6m  CC=18     ←0
+  │ builtin                    185L  14C    0m  CC=0.0    ←0
+  │ build                      166L  0C    4m  CC=7      ←0
+  │ rules                      150L  3C    6m  CC=7      ←0
+  │ os_linux                   145L  2C   12m  CC=7      ←0
+  │ !! migration_yaml             125L  1C    2m  CC=16     ←0
+  │ business_health            122L  1C    5m  CC=6      ←0
+  │ compat                     121L  1C    1m  CC=1      ←0
+  │ endpoint_http              120L  1C    5m  CC=6      ←0
+  │ tree                       105L  2C    6m  CC=11     ←0
+  │ service_containers         101L  1C    5m  CC=4      ←0
+  │ diff                       100L  1C    2m  CC=4      ←1
+  │ context                     98L  5C    4m  CC=2      ←0
+  │ registry                    81L  1C    7m  CC=2      ←1
+  │ detector                    80L  2C    2m  CC=4      ←0
+  │ !! scan                        78L  0C    1m  CC=16     ←0
+  │ model                       78L  2C    1m  CC=1      ←0
+  │ __init__                    78L  0C    0m  CC=0.0    ←0
+  │ adaptive                    77L  1C    3m  CC=10     ←0
+  │ formats                     71L  0C    3m  CC=6      ←0
+  │ snapshot_yaml               67L  1C    2m  CC=5      ←0
+  │ model                       64L  3C    4m  CC=1      ←0
+  │ convert                     62L  0C    1m  CC=11     ←0
+  │ linear                      55L  1C    3m  CC=6      ←0
+  │ base                        50L  3C    4m  CC=2      ←0
+  │ drift                       41L  0C    1m  CC=5      ←0
+  │ __init__                    41L  0C    0m  CC=0.0    ←0
+  │ exec_adapter                40L  1C    4m  CC=6      ←0
+  │ registry                    36L  1C    5m  CC=1      ←0
+  │ __init__                    26L  0C    0m  CC=0.0    ←0
+  │ __init__                    25L  0C    0m  CC=0.0    ←0
+  │ main                        24L  0C    1m  CC=1      ←0
+  │ __init__                    23L  0C    0m  CC=0.0    ←0
+  │ __init__                    13L  0C    0m  CC=0.0    ←0
   │ __init__                    12L  0C    0m  CC=0.0    ←0
-  │ _version                     8L  0C    0m  CC=0.0    ←0
+  │ __init__                    12L  0C    0m  CC=0.0    ←0
+  │ _version                     9L  0C    0m  CC=0.0    ←0
   │ __init__                     8L  0C    0m  CC=0.0    ←0
   │ __init__                     8L  0C    0m  CC=0.0    ←0
-  │ __init__                     8L  0C    0m  CC=0.0    ←0
-  │ __init__                     6L  0C    0m  CC=0.0    ←0
-  │ __init__                     6L  0C    0m  CC=0.0    ←0
   │ __init__                     5L  0C    0m  CC=0.0    ←0
   │ __init__                     1L  0C    0m  CC=0.0    ←0
   │ __init__                     1L  0C    0m  CC=0.0    ←0
@@ -72,32 +168,13 @@ LAYERS:
   │ __init__                     1L  0C    0m  CC=0.0    ←0
   │
   ./                              CC̄=0.0    ←in:0  →out:0
-  │ !! SUMD.md                    668L  0C  150m  CC=0.0    ←0
-  │ !! SUMR.md                    586L  0C    0m  CC=0.0    ←0
-  │ !! goal.yaml                  512L  0C    0m  CC=0.0    ←0
-  │ op3_poc.md                 363L  0C    0m  CC=0.0    ←0
-  │ CHANGELOG.md               245L  0C    0m  CC=0.0    ←0
-  │ README.md                  127L  0C    1m  CC=0.0    ←0
+  │ !! goal.yaml                  528L  0C    0m  CC=0.0    ←0
+  │ koru.yaml                  146L  0C    0m  CC=0.0    ←0
   │ sumd.json                  102L  0C    0m  CC=0.0    ←0
   │ pyproject.toml              69L  0C    0m  CC=0.0    ←0
   │ project.sh                  36L  0C    0m  CC=0.0    ←0
-  │
-  docs/                           CC̄=0.0    ←in:0  →out:0
-  │ !! README.md                  556L  0C    1m  CC=0.0    ←0
-  │ API.md                     431L  0C    1m  CC=0.0    ←0
-  │
-  project/                        CC̄=0.0    ←in:0  →out:0
-  │ !! calls.yaml                 589L  0C    0m  CC=0.0    ←0
-  │ !! context.md                 570L  0C    0m  CC=0.0    ←0
-  │ map.toon.yaml              376L  0C  150m  CC=0.0    ←0
-  │ README.md                  339L  0C    0m  CC=0.0    ←0
-  │ integration-roadmap.md     158L  0C    0m  CC=0.0    ←0
-  │ analysis.toon.yaml         113L  0C    0m  CC=0.0    ←0
-  │ calls.toon.yaml             88L  0C    0m  CC=0.0    ←0
-  │ duplication.toon.yaml       65L  0C    0m  CC=0.0    ←0
-  │ evolution.toon.yaml         64L  0C    0m  CC=0.0    ←0
-  │ project.toon.yaml           56L  0C    0m  CC=0.0    ←0
-  │ prompt.txt                  47L  0C    0m  CC=0.0    ←0
+  │ local.dev.txt               12L  0C    0m  CC=0.0    ←0
+  │ pyqual.yaml                  9L  0C    0m  CC=0.0    ←0
   │
   examples/                       CC̄=0.0    ←in:0  →out:0
   │ snapshot.yaml               42L  0C    0m  CC=0.0    ←0

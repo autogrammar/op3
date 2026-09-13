@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-09-08T08:46:26.134639+00:00",
+  "project": "/home/tom/github/autogrammar/op3",
+  "runtime_dir": ".planfile/.koru",
+  "schema": "koru.project/v1",
+  "source": "init",
+  "updated_at": "2026-09-08T08:46:26.134639+00:00"
+}

@@ -1,25 +1,26 @@
 flowchart TD
+%% generated in 0.00s
 
     %% Entry points (blue)
     classDef entry fill:#4dabf7,stroke:#1971c2,color:#fff
 
     subgraph Core
-        README__execute["execute"]
-        docs__API__print["print"]
-        src__opstree__drift__detector__DriftDetector__detect["detect"]
-        src__opstree__drift__detector__DriftDetector___summarize_changes["_summarize_changes"]
-        src__opstree__diagnostics__rules__Diagnostic__to_dict["to_dict"]
-        src__opstree__diagnostics__rules__Rule____post_init__["__post_init__"]
-        src__opstree__diagnostics__rules__Rule__evaluate["evaluate"]
-        src__opstree__diagnostics__rules__RuleEngine__evaluate["evaluate"]
-        src__opstree__diagnostics__rules__RuleEngine__any_error["any_error"]
-        src__opstree__probes__base__ProbeContext____post_init__["__post_init__"]
-        src__opstree__probes__base__Probe__can_probe["can_probe"]
-        src__opstree__probes__base__Probe__scan["scan"]
-        src__opstree__probes__base__Probe__anomalies["anomalies"]
-        src__opstree__probes__registry__ProbeRegistry__register["register"]
-        src__opstree__probes__registry__ProbeRegistry__get["get"]
-        ...["+394 more"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe__can_probe["can_probe"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe__scan["scan"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe___get_kernel_version["_get_kernel_version"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe___get_arch["_get_arch"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe___get_hostname["_get_hostname"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe___get_uptime["_get_uptime"]
+        src__opstree__probes__builtin__os_linux__OsKernelProbe__anomalies["anomalies"]
+        src__opstree__probes__builtin__os_linux__OsConfigProbe__can_probe["can_probe"]
+        src__opstree__probes__builtin__os_linux__OsConfigProbe__scan["scan"]
+        src__opstree__probes__builtin__os_linux__OsConfigProbe___read_config_txt["_read_config_txt"]
+        src__opstree__probes__builtin__os_linux__OsConfigProbe___read_cmdline["_read_cmdline"]
+        src__opstree__probes__builtin__os_linux__OsConfigProbe__anomalies["anomalies"]
+        src__opstree__probes__builtin__service_containers__ServiceContainersProbe__can_probe["can_probe"]
+        src__opstree__probes__builtin__service_containers__ServiceContainersProbe__scan["scan"]
+        src__opstree__probes__builtin__service_containers__ServiceContainersProbe___list_systemd_services["_list_systemd_services"]
+        ...["+112 more"]
     end
 
-    class README__execute,docs__API__print,src__opstree__drift__detector__DriftDetector__detect,src__opstree__drift__detector__DriftDetector___summarize_changes,src__opstree__diagnostics__rules__Diagnostic__to_dict,src__opstree__diagnostics__rules__Rule____post_init__,src__opstree__diagnostics__rules__Rule__evaluate,src__opstree__diagnostics__rules__RuleEngine__evaluate,src__opstree__diagnostics__rules__RuleEngine__any_error,src__opstree__probes__base__ProbeContext____post_init__ entry
+    class src__opstree__probes__builtin__os_linux__OsKernelProbe__can_probe,src__opstree__probes__builtin__os_linux__OsKernelProbe__scan,src__opstree__probes__builtin__os_linux__OsKernelProbe___get_kernel_version,src__opstree__probes__builtin__os_linux__OsKernelProbe___get_arch,src__opstree__probes__builtin__os_linux__OsKernelProbe___get_hostname,src__opstree__probes__builtin__os_linux__OsKernelProbe___get_uptime,src__opstree__probes__builtin__os_linux__OsKernelProbe__anomalies,src__opstree__probes__builtin__os_linux__OsConfigProbe__can_probe,src__opstree__probes__builtin__os_linux__OsConfigProbe__scan,src__opstree__probes__builtin__os_linux__OsConfigProbe___read_config_txt entry

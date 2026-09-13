@@ -1,0 +1,385 @@
+source: code2llm
+# generated in 0.02s
+schema: code2llm.planfile_tickets.v1
+project_root: /home/tom/github/autogrammar/op3
+tickets:
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.opstree.cli.commands.scan.scan (CC=16)'
+  description: 'code2llm reports `src.opstree.cli.commands.scan.scan` at `src/opstree/cli/commands/scan.py:31`
+    with cyclomatic complexity 16 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/opstree/cli/commands/scan.py
+  dedupe_key: code2llm:cc:src/opstree/cli/commands/scan.py:src.opstree.cli.commands.scan.scan
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.opstree.formats.less.LessAdapter.render
+    (CC=22)'
+  description: 'code2llm reports `src.opstree.formats.less.LessAdapter.render` at
+    `src/opstree/formats/less.py:197` with cyclomatic complexity 22 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/opstree/formats/less.py
+  dedupe_key: code2llm:cc:src/opstree/formats/less.py:src.opstree.formats.less.LessAdapter.render
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.opstree.formats.migration_yaml.MigrationYamlAdapter.render
+    (CC=16)'
+  description: 'code2llm reports `src.opstree.formats.migration_yaml.MigrationYamlAdapter.render`
+    at `src/opstree/formats/migration_yaml.py:69` with cyclomatic complexity 16 (limit
+    15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/opstree/formats/migration_yaml.py
+  dedupe_key: code2llm:cc:src/opstree/formats/migration_yaml.py:src.opstree.formats.migration_yaml.MigrationYamlAdapter.render
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.opstree.probes.builtin.physical_rpi.RpiPhysicalDisplayProbe._probe_wlr_randr
+    (CC=17)'
+  description: 'code2llm reports `src.opstree.probes.builtin.physical_rpi.RpiPhysicalDisplayProbe._probe_wlr_randr`
+    at `src/opstree/probes/builtin/physical_rpi.py:191` with cyclomatic complexity
+    17 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/opstree/probes/builtin/physical_rpi.py
+  dedupe_key: code2llm:cc:src/opstree/probes/builtin/physical_rpi.py:src.opstree.probes.builtin.physical_rpi.RpiPhysicalDisplayProbe._probe_wlr_randr
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: src.opstree.probes.builtin.runtime_container.RuntimeContainerProbe._list_containers
+    (CC=18)'
+  description: 'code2llm reports `src.opstree.probes.builtin.runtime_container.RuntimeContainerProbe._list_containers`
+    at `src/opstree/probes/builtin/runtime_container.py:92` with cyclomatic complexity
+    18 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - src/opstree/probes/builtin/runtime_container.py
+  dedupe_key: code2llm:cc:src/opstree/probes/builtin/runtime_container.py:src.opstree.probes.builtin.runtime_container.RuntimeContainerProbe._list_containers
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _i2c_chip_missing_rules'
+  description: 'code2llm reports `God Function: _i2c_chip_missing_rules` in `src/opstree/probes/builtin/rpi_diagnostics.py:107`.
+
+
+    Function ''_i2c_chip_missing_rules'' is oversized: CC=10, fan-out=8, mutations=7.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/probes/builtin/rpi_diagnostics.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/probes/builtin/rpi_diagnostics.py:107:God
+    Function: _i2c_chip_missing_rules'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _parse_block'
+  description: 'code2llm reports `God Function: _parse_block` in `src/opstree/formats/less.py:265`.
+
+
+    Function ''_parse_block'' is oversized: CC=8, fan-out=14, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/formats/less.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/formats/less.py:265:God Function:
+    _parse_block'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _probe_i2c_buses'
+  description: 'code2llm reports `God Function: _probe_i2c_buses` in `src/opstree/probes/builtin/physical_rpi.py:285`.
+
+
+    Function ''_probe_i2c_buses'' is oversized: CC=13, fan-out=13, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/probes/builtin/physical_rpi.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/probes/builtin/physical_rpi.py:285:God
+    Function: _probe_i2c_buses'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _unflatten'
+  description: 'code2llm reports `God Function: _unflatten` in `src/opstree/fleet/formats.py:11`.
+
+
+    Function ''_unflatten'' is oversized: CC=5, fan-out=5, mutations=9.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/fleet/formats.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/fleet/formats.py:11:God Function:
+    _unflatten'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: compute_variance'
+  description: 'code2llm reports `God Function: compute_variance` in `src/opstree/fleet/scanner.py:109`.
+
+
+    Function ''compute_variance'' is oversized: CC=11, fan-out=16, mutations=8.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/fleet/scanner.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/fleet/scanner.py:109:God Function:
+    compute_variance'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: convert'
+  description: 'code2llm reports `God Function: convert` in `src/opstree/cli/commands/convert.py:24`.
+
+
+    Function ''convert'' is oversized: CC=11, fan-out=17, mutations=14.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/cli/commands/convert.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/cli/commands/convert.py:24:God
+    Function: convert'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: drift'
+  description: 'code2llm reports `God Function: drift` in `src/opstree/cli/commands/drift.py:14`.
+
+
+    Function ''drift'' is oversized: CC=5, fan-out=13, mutations=8.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/cli/commands/drift.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/cli/commands/drift.py:14:God
+    Function: drift'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: make_compat_helpers'
+  description: 'code2llm reports `God Function: make_compat_helpers` in `src/opstree/integrations/compat.py:44`.
+
+
+    Function ''make_compat_helpers'' is oversized: CC=1, fan-out=14, mutations=1.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/integrations/compat.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/integrations/compat.py:44:God
+    Function: make_compat_helpers'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: parse'
+  description: 'code2llm reports `God Function: parse` in `src/opstree/formats/less.py:90`.
+
+
+    Function ''parse'' is oversized: CC=7, fan-out=13, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/formats/less.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/formats/less.py:90:God Function:
+    parse'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: render_common_as_snapshot'
+  description: 'code2llm reports `God Function: render_common_as_snapshot` in `src/opstree/fleet/formats.py:28`.
+
+
+    Function ''render_common_as_snapshot'' is oversized: CC=6, fan-out=9, mutations=7.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/fleet/formats.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/fleet/formats.py:28:God Function:
+    render_common_as_snapshot'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: scan'
+  description: 'code2llm reports `God Function: scan` in `src/opstree/scanner/adaptive.py:38`.
+
+
+    Function ''scan'' is oversized: CC=10, fan-out=13, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/scanner/adaptive.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/scanner/adaptive.py:38:God
+    Function: scan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: scan'
+  description: 'code2llm reports `God Function: scan` in `src/opstree/probes/builtin/physical_rpi.py:66`.
+
+
+    Function ''scan'' is oversized: CC=3, fan-out=21, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/probes/builtin/physical_rpi.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/probes/builtin/physical_rpi.py:66:God
+    Function: scan'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: scan_fleet'
+  description: 'code2llm reports `God Function: scan_fleet` in `src/opstree/fleet/scanner.py:152`.
+
+
+    Function ''scan_fleet'' is oversized: CC=5, fan-out=11, mutations=7.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/fleet/scanner.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/fleet/scanner.py:152:God Function:
+    scan_fleet'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: snapshot_diff'
+  description: 'code2llm reports `God Function: snapshot_diff` in `src/opstree/snapshot/diff.py:20`.
+
+
+    Function ''snapshot_diff'' is oversized: CC=4, fan-out=7, mutations=7.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/snapshot/diff.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/snapshot/diff.py:20:God Function:
+    snapshot_diff'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Module: src.opstree.layers.builtin'
+  description: 'code2llm reports `God Module: src.opstree.layers.builtin` in `src/opstree/layers/builtin.py:1`.
+
+
+    Module ''src.opstree.layers.builtin'' is too large (0 functions, 14 classes).
+    Consider splitting into sub-modules.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - src/opstree/layers/builtin.py
+  dedupe_key: 'code2llm:smell:god_function:src/opstree/layers/builtin.py:1:God Module:
+    src.opstree.layers.builtin'
+applied: []
+skipped: []

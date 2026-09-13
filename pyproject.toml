@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "op3"
-version = "0.2.6"
+version = "0.2.7"
 description = "Layered operations tree — observe, diff, orchestrate infrastructure as data"
 readme = "README.md"
 license = "Apache-2.0"
@@ -29,7 +29,7 @@ dev = [
     "ruff>=0.4",
     "mypy>=1.0",
     "costs>=0.1.20",
-    "pfix>=0.1.60",
+    "pfix>=0.1.60; python_version >= '3.10'",
 ]
 
 [project.scripts]
