@@ -22,7 +22,7 @@ versioning:
   files:
   - VERSION
   - pyproject.toml:version
-  - src/op3/__init__.py:__version__
+  - src/opstree/_version.py:__version__
   bump_rules:
     patch: 10
     minor: 50
