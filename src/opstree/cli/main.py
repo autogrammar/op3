@@ -11,6 +11,11 @@ from opstree.cli.commands.convert import convert
 @click.group()
 @click.version_option(version=__version__)
 def cli():
+    try:
+        from .autoupdate import check_for_updates
+        check_for_updates("op3")
+    except Exception:
+        pass
     """op3 — Layered operations tree for infrastructure observation."""
     pass
 
